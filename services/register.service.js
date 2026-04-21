@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 
-const registerUser = async (userData) => {
+const registerUser = async (userData = {}) => {
   const { name, email, phone, password } = userData;
 
   if (!name || !email || !phone || !password) {

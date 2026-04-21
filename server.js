@@ -2,7 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
-import authRoutes from "./routes/register.auth.js";
+import registerRoutes from "./routes/register.auth.js";
+import loginRoutes from "./routes/login.auth.js";
 import errorHandler from "./middlewares/error.js";
 
 dotenv.config();
@@ -14,7 +15,9 @@ app.use(cors());
 
 await connectDB();
 
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", registerRoutes);
+app.use("/api/auth", loginRoutes);
+
 app.use(errorHandler);
 
 app.get("/", (req, res) => {
